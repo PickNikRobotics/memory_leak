@@ -1,5 +1,16 @@
 # Used with wstool, users can download and source of all packages in this.
 - git:
     local-name: memory_leak
-    uri: git@github.com:PickNikRobotics/memory_leak.git
+    uri: https://github.com/PickNikRobotics/memory_leak.git
     version: master
+
+- git:
+    local-name: ros_comm
+    uri: https://github.com/ros/ros_comm.git
+    version: melodic-devel
+
+- git:
+    local-name: rosconsole
+    uri: https://github.com/ros/rosconsole.git
+    version: melodic-devel
+

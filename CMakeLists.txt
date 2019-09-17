@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   roslint
   rospy
+  rosconsole
 )
 
 # System dependencies are found with CMake's conventions
@@ -28,6 +29,7 @@ catkin_package(
   CATKIN_DEPENDS
     roscpp
     rospy
+    rosconsole
   INCLUDE_DIRS
     include
   LIBRARIES

@@ -60,13 +60,14 @@ public:
 protected:
   // --------------------------------------------------------
   // Any test that requires access to protected variables should go here
-  FRIEND_TEST(TestClassName, TestNameOfClass)
+  FRIEND_TEST(TestClassName, TestNameOfClass);
 
   // A shared node handle
   ros::NodeHandle nh_;
 
   // The short name of this class
   std::string name_;
+
 };  // end class ClassName
 
 // Create std pointers for this class

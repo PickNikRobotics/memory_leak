@@ -52,6 +52,54 @@ ClassName::ClassName()
   // Add more parameters here to load if desired
   // rosparam_shortcuts::shutdownIfError(name_, error);
 
-  ROS_INFO_STREAM_NAMED(name_, "Hello world.");
+  ROS_DEBUG_NAMED(name_, "Hello world.\t");
+  ROS_INFO_NAMED(name_, "Hello world.\t");
+  ROS_WARN_NAMED(name_, "Hello world.\t");
+  ROS_ERROR_NAMED(name_, "Hello world.\t");
+
+  ROS_DEBUG_NAMED(name_, "Hello world.\t %s", "string");
+  ROS_INFO_NAMED(name_, "Hello world.\t %s", "string");
+  ROS_WARN_NAMED(name_, "Hello world.\t %s", "string");
+  ROS_ERROR_NAMED(name_, "Hello world.\t %s", "string");
+
+  ROS_DEBUG_NAMED(name_, "Hello world.\t %d", 1);
+  ROS_INFO_NAMED(name_, "Hello world.\t %d", 1);
+  ROS_WARN_NAMED(name_, "Hello world.\t %d", 1);
+  ROS_ERROR_NAMED(name_, "Hello world.\t %d", 1);
+
+  ROS_DEBUG_NAMED(name_, "Hello world.\t %d", true);
+  ROS_INFO_NAMED(name_, "Hello world.\t %d", true);
+  ROS_WARN_NAMED(name_, "Hello world.\t %d", true);
+  ROS_ERROR_NAMED(name_, "Hello world.\t %d", true);
+
+  ROS_DEBUG_NAMED(name_, "Hello world.\t %f", 3.3);
+  ROS_INFO_NAMED(name_, "Hello world.\t %f", 3.3);
+  ROS_WARN_NAMED(name_, "Hello world.\t %f", 3.3);
+  ROS_ERROR_NAMED(name_, "Hello world.\t %f", 3.3);
+
+  ROS_DEBUG_STREAM_NAMED(name_, "Hello world.\t");
+  ROS_INFO_STREAM_NAMED(name_, "Hello world.\t");
+  ROS_WARN_STREAM_NAMED(name_, "Hello world.\t");
+  ROS_ERROR_STREAM_NAMED(name_, "Hello world.\t");
+
+  ROS_DEBUG_STREAM_NAMED(name_, "Hello world.\t" << "string");
+  ROS_INFO_STREAM_NAMED(name_, "Hello world.\t" << "string");
+  ROS_WARN_STREAM_NAMED(name_, "Hello world.\t" << "string");
+  ROS_ERROR_STREAM_NAMED(name_, "Hello world.\t" << "string");
+
+  ROS_DEBUG_STREAM_NAMED(name_, "Hello world.\t" << 1);
+  ROS_INFO_STREAM_NAMED(name_, "Hello world.\t" << 1);
+  ROS_WARN_STREAM_NAMED(name_, "Hello world.\t" << 1);
+  ROS_ERROR_STREAM_NAMED(name_, "Hello world.\t" << 1);
+
+  ROS_DEBUG_STREAM_NAMED(name_, "Hello world.\t" << true);
+  ROS_INFO_STREAM_NAMED(name_, "Hello world.\t" << true);
+  ROS_WARN_STREAM_NAMED(name_, "Hello world.\t" << true);
+  ROS_ERROR_STREAM_NAMED(name_, "Hello world.\t" << true);
+
+  ROS_DEBUG_STREAM_NAMED(name_, "Hello world.\t" << 3.3);
+  ROS_INFO_STREAM_NAMED(name_, "Hello world.\t" << 3.3);
+  ROS_WARN_STREAM_NAMED(name_, "Hello world.\t" << 3.3);
+  ROS_ERROR_STREAM_NAMED(name_, "Hello world.\t" << 3.3);
 }
 }  // end namespace memory_leak
