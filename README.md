@@ -1,13 +1,13 @@
-# PACKAGE_NAME
+# memory_leak
 
-Description: PACKAGE_DESCRIPTION
+Description: a testbed for finding memory leaks
 
 <img src="https://picknik.ai/assets/images/logo.jpg" width="100">
 
-Developed by FIRST_NAME LAST_NAME at [PickNik Consulting](http://picknik.ai/)
+Developed by Mike Lautman at [PickNik Consulting](http://picknik.ai/)
 
-TODO(GITHUB_NAME): fix Travis badge:
-[![Build Status](https://travis-ci.com/PickNikRobotics/PACKAGE_NAME.svg?token=o9hPQnr2kShM9ckDs6J8&branch=master)](https://travis-ci.com/PickNikRobotics/PACKAGE_NAME)
+TODO(mlautman): fix Travis badge:
+[![Build Status](https://travis-ci.com/PickNikRobotics/memory_leak.svg?token=o9hPQnr2kShM9ckDs6J8&branch=master)](https://travis-ci.com/PickNikRobotics/memory_leak)
 
 ## Install
 
@@ -15,11 +15,11 @@ TODO(GITHUB_NAME): fix Travis badge:
 
 > Note: this package has not been released yet
 
-    sudo apt-get install ros-${ROS_DISTRO}-PACKAGE_NAME
+    sudo apt-get install ros-${ROS_DISTRO}-memory_leak
 
 ### Build from Source
 
-1. Install [ROS ___PREFERRED_ROS_DISTRO___](http://wiki.ros.org/___PREFERRED_ROS_DISTRO___/Installation/Ubuntu) if you are running on Ubuntu 16.04 or [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) for Ubuntu 18.04. This package primerily targets ___PREFERRED_ROS_DISTRO___
+1. Install [ROS melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) if you are running on Ubuntu 16.04 or [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu) for Ubuntu 18.04. This package primerily targets melodic
 
 1. Install the following build tools:
 
@@ -33,9 +33,9 @@ TODO(GITHUB_NAME): fix Travis badge:
 
 1. Download the required repositories and install any dependencies:
 
-        git clone git@github.com:PickNikRobotics/PACKAGE_NAME.git
+        git clone git@github.com:PickNikRobotics/memory_leak.git
         wstool init src
-        wstool merge -t src PACKAGE_NAME/PACKAGE_NAME.rosinstall
+        wstool merge -t src memory_leak/memory_leak.rosinstall
         wstool update -t src
         rosdep install --from-paths src --ignore-src --rosdistro ${ROS_DISTRO}
 
@@ -52,36 +52,36 @@ TODO(GITHUB_NAME): fix Travis badge:
 
 To make sure you have the latest repos:
 
-    cd $CATKIN_WS/src/PACKAGE_NAME
+    cd $CATKIN_WS/src/memory_leak
     git checkout master
     git pull origin master
     cd ..
-    wstool merge PACKAGE_NAME/PACKAGE_NAME.rosinstall
+    wstool merge memory_leak/memory_leak.rosinstall
     wstool update
     rosdep install --from-paths . --ignore-src --rosdistro ${ROS_DISTRO}
 
 ## Run
 
-Run CPP_EXECUTABLE_NAME
+Run class_name_main
 ```
-roslaunch PACKAGE_NAME CPP_EXECUTABLE_NAME.launch
+roslaunch memory_leak class_name_main.launch
 ```
 
 ### Run with Debuging
 
-Run CPP_EXECUTABLE_NAME with GDB
+Run class_name_main with GDB
 ```
-roslaunch PACKAGE_NAME CPP_EXECUTABLE_NAME.launch debug:=true
-```
-
-Run CPP_EXECUTABLE_NAME with Callgrind
-```
-roslaunch PACKAGE_NAME CPP_EXECUTABLE_NAME.launch callgrind:=true
+roslaunch memory_leak class_name_main.launch debug:=true
 ```
 
-Run CPP_EXECUTABLE_NAME with Valgrind
+Run class_name_main with Callgrind
 ```
-roslaunch PACKAGE_NAME CPP_EXECUTABLE_NAME.launch valgrind:=true
+roslaunch memory_leak class_name_main.launch callgrind:=true
+```
+
+Run class_name_main with Valgrind
+```
+roslaunch memory_leak class_name_main.launch valgrind:=true
 ```
 
 ## Run Inside Docker
@@ -91,34 +91,34 @@ roslaunch PACKAGE_NAME CPP_EXECUTABLE_NAME.launch valgrind:=true
 You must have a private rsa key `~/.ssh/id_rsa` that is not password protected and is attached to your Github/Bitbucket/Gerrit accounts.
 You must also have a working installation of `docker`.
 
-1. Navigate to `$CATKIN_WS/src/PACKAGE_NAME/.docker`. You should see the `Dockerfile` recipe in the directory.
+1. Navigate to `$CATKIN_WS/src/memory_leak/.docker`. You should see the `Dockerfile` recipe in the directory.
 
 1. Build the docker image
 
-        cd $CATKIN_WS/src/PACKAGE_NAME/.docker
-        cp ~/.ssh/id_rsa id_rsa && docker build -t PACKAGE_NAME:___PREFERRED_ROS_DISTRO___-source .; rm id_rsa
+        cd $CATKIN_WS/src/memory_leak/.docker
+        cp ~/.ssh/id_rsa id_rsa && docker build -t memory_leak:melodic-source .; rm id_rsa
 
 1. Run the docker image
 
     * Without the gui
 
-            docker run -it --rm PACKAGE_NAME:___PREFERRED_ROS_DISTRO___-source /bin/bash
+            docker run -it --rm memory_leak:melodic-source /bin/bash
 
     * With the gui (tested with Ubuntu native and a Ubuntu VM)
 
-            . ./gui-docker -it --rm PACKAGE_NAME:___PREFERRED_ROS_DISTRO___-source /bin/bash
+            . ./gui-docker -it --rm memory_leak:melodic-source /bin/bash
 
 ## Code API
 
 > Note: this package has not been released yet
 
-See [the Doxygen documentation](http://docs.ros.org/___PREFERRED_ROS_DISTRO___/api/PACKAGE_NAME/html/anotated.html)
+See [the Doxygen documentation](http://docs.ros.org/melodic/api/memory_leak/html/anotated.html)
 
 ## Testing and Linting
 
 To run [roslint](http://wiki.ros.org/roslint), use the following command with [catkin-tools](https://catkin-tools.readthedocs.org/).
 
-    roscd PACKAGE_NAME
+    roscd memory_leak
     catkin build --no-status --no-deps --this --make-args roslint
 
 To run [catkin lint](https://pypi.python.org/pypi/catkin_lint), use the following command with [catkin-tools](https://catkin-tools.readthedocs.org/).
@@ -131,7 +131,7 @@ Use the following command with [catkin-tools](https://catkin-tools.readthedocs.o
 
 To run tests for just one package:
 
-    catkin run_tests --make-args tests -- PACKAGE_NAME
+    catkin run_tests --make-args tests -- memory_leak
 
 To view test results:
 

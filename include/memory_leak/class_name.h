@@ -32,12 +32,12 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-/* Author: FIRST_NAME LAST_NAME
-   Desc: TODO(GITHUB_NAME):
+/* Author: Mike Lautman
+   Desc: TODO(mlautman):
 */
 
-#ifndef INDEF_NAMESPACE
-#define INDEF_NAMESPACE
+#ifndef MEMORY_LEAK_CLASS_NAME_H
+#define MEMORY_LEAK_CLASS_NAME_H
 
 // C++
 #include <string>
@@ -49,29 +49,29 @@
 #include <gtest/gtest.h>
 
 
-namespace PACKAGE_NAME
+namespace memory_leak
 {
-class CPP_CLASS_NAME
+class ClassName
 {
 public:
   /** \brief Constructor */
-  CPP_CLASS_NAME();
+  ClassName();
 
 protected:
   // --------------------------------------------------------
   // Any test that requires access to protected variables should go here
-  FRIEND_TEST(TestCPP_CLASS_NAME, TestNameOfClass)
+  FRIEND_TEST(TestClassName, TestNameOfClass)
 
   // A shared node handle
   ros::NodeHandle nh_;
 
   // The short name of this class
   std::string name_;
-};  // end class CPP_CLASS_NAME
+};  // end class ClassName
 
 // Create std pointers for this class
-typedef std::shared_ptr<CPP_CLASS_NAME> CPP_CLASS_NAMEPtr;
-typedef std::shared_ptr<const CPP_CLASS_NAME> CPP_CLASS_NAMEConstPtr;
+typedef std::shared_ptr<ClassName> ClassNamePtr;
+typedef std::shared_ptr<const ClassName> ClassNameConstPtr;
 
-}  // namespace PACKAGE_NAME
-#endif  // INDEF_NAMESPACE
+}  // namespace memory_leak
+#endif  // MEMORY_LEAK_CLASS_NAME_H

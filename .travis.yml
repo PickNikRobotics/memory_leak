@@ -8,11 +8,11 @@ compiler:
 notifications:
   email:
     recipients:
-      - EMAIL_ADDRESS
+      - mike@picknik.ai
 env:
   matrix:
-    - ROS_DISTRO=___PREFERRED_ROS_DISTRO___  ROS_REPO=ros-shadow-fixed UPSTREAM_WORKSPACE=./PACKAGE_NAME.rosinstall
-    - ROS_DISTRO=___PREFERRED_ROS_DISTRO___  ROS_REPO=ros              TEST=clang-format
+    - ROS_DISTRO=melodic  ROS_REPO=ros-shadow-fixed UPSTREAM_WORKSPACE=./memory_leak.rosinstall
+    - ROS_DISTRO=melodic  ROS_REPO=ros              TEST=clang-format
 script:
   - source .travis/travis.sh
 addons:

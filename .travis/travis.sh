@@ -214,10 +214,10 @@ travis_run source devel/setup.bash;
 # done
 
 # Run catkin package tests
-travis_run catkin run_tests --no-deps PACKAGE_NAME
+travis_run catkin run_tests --no-deps memory_leak
 
 # Show test results summary and throw error if necessary
-travis_run catkin_test_results build/PACKAGE_NAME
+travis_run catkin_test_results build/memory_leak
 #travis_run catkin_test_results
 
 echo "Travis script has finished successfully"

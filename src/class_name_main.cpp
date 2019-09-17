@@ -32,71 +32,29 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-/* Author: FIRST_NAME LAST_NAME
-   Desc: TODO(GITHUB_NAME):
+/* Author: Mike Lautman
+   Desc: TODO(mlautman):
 */
-
-/** EXAMPLES:
-    EXPECT_FALSE(robot_state.hasFixedLinks());
-    EXPECT_EQ(robot_state.getFixedLinksCount(), 0);
-    EXPECT_TRUE(robot_state.getPrimaryFixedLink() == NULL);
-    EXPECT_GT(robot_state.getFixedLinksMode(), 0);
-    EXPECT_LT( fabs(vars[0] - 0), EPSILON) << "Virtual joint in wrong position " << vars[0];
-*/
-
-// C++
-#include <string>
 
 // ROS
 #include <ros/ros.h>
-
-// Testing
-#include <gtest/gtest.h>
-
-// Main class
-#include <PACKAGE_NAME/CPP_CLASS_FILE_NAME.h>
-
-
-namespace PACKAGE_NAME
-{
-
-class TestCPP_CLASS_NAME : public ::testing::Test
-{
-public:
-  void SetUp() override
-  {
-    nh_.reset(new ros::NodeHandle("~"))
-    server_.reset(new CPP_CLASS_NAME());
-  }
-  void TearDown() override
-  {
-  }
-
-protected:
-  std::unique_ptr<ros::NodeHandle> nh_;
-  CPP_CLASS_NAMEPtr server_;
-
-};  // class TestCPP_CLASS_NAME
-
-TEST_F(TestCPP_CLASS_NAME, TestNameOfClass)
-{
-  std::string expected_class_name = "CPP_SHORT_NAME";
-  ASSERT_STREQ(server_->name_.c_str(), expected_class_name.c_str());
-}
-
-}  // namespace PACKAGE_NAME
+#include <memory_leak/class_name.h>
 
 int main(int argc, char** argv)
 {
-  testing::InitGoogleTest(&argc, argv);
-  ros::init(argc, argv, "CPP_SHORT_NAME_test");
+  // Initialize ROS
+  ros::init(argc, argv, "class_name");
+  ROS_INFO_STREAM_NAMED("main", "Starting ClassName...");
 
   ros::AsyncSpinner spinner(1);
   spinner.start();
 
-  int result = RUN_ALL_TESTS();
+  // Initialize main class
+  memory_leak::ClassName server;
 
-  spinner.stop();
+  // Shutdown
+  ROS_INFO_STREAM_NAMED("main", "Shutting down.");
   ros::shutdown();
-  return result;
+
+  return 0;
 }

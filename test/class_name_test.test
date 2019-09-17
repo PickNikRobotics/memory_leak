@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <test pkg="memory_leak" type="class_name_test" test-name="class_name_test" time-limit="300" args="">
+    <rosparam command="load" file="$(find memory_leak)/config/setup.yaml"/>
+  </test>
+</launch>

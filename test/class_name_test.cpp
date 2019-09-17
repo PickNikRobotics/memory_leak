@@ -32,26 +32,71 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-/* Author: FIRST_NAME LAST_NAME
-   Desc: TODO(GITHUB_NAME):
+/* Author: Mike Lautman
+   Desc: TODO(mlautman):
 */
 
-#include <PACKAGE_NAME/CPP_CLASS_FILE_NAME.h>
+/** EXAMPLES:
+    EXPECT_FALSE(robot_state.hasFixedLinks());
+    EXPECT_EQ(robot_state.getFixedLinksCount(), 0);
+    EXPECT_TRUE(robot_state.getPrimaryFixedLink() == NULL);
+    EXPECT_GT(robot_state.getFixedLinksMode(), 0);
+    EXPECT_LT( fabs(vars[0] - 0), EPSILON) << "Virtual joint in wrong position " << vars[0];
+*/
 
-namespace PACKAGE_NAME
+// C++
+#include <string>
+
+// ROS
+#include <ros/ros.h>
+
+// Testing
+#include <gtest/gtest.h>
+
+// Main class
+#include <memory_leak/class_name.h>
+
+
+namespace memory_leak
 {
-CPP_CLASS_NAME::CPP_CLASS_NAME()
-: nh_("~")
-, name_("CPP_SHORT_NAME")
+
+class TestClassName : public ::testing::Test
 {
-  // Load rosparams
-  // ros::NodeHandle rpnh(nh_, name_);
-  // std::size_t error = 0;
-  // error += !rosparam_shortcuts::get(name_, rpnh, "control_rate", control_rate_);
+public:
+  void SetUp() override
+  {
+    nh_.reset(new ros::NodeHandle("~"))
+    server_.reset(new ClassName());
+  }
+  void TearDown() override
+  {
+  }
 
-  // Add more parameters here to load if desired
-  // rosparam_shortcuts::shutdownIfError(name_, error);
+protected:
+  std::unique_ptr<ros::NodeHandle> nh_;
+  ClassNamePtr server_;
 
-  ROS_INFO_STREAM_NAMED(name_, "Hello world.");
+};  // class TestClassName
+
+TEST_F(TestClassName, TestNameOfClass)
+{
+  std::string expected_class_name = "class_name";
+  ASSERT_STREQ(server_->name_.c_str(), expected_class_name.c_str());
 }
-}  // end namespace PACKAGE_NAME
+
+}  // namespace memory_leak
+
+int main(int argc, char** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  ros::init(argc, argv, "class_name_test");
+
+  ros::AsyncSpinner spinner(1);
+  spinner.start();
+
+  int result = RUN_ALL_TESTS();
+
+  spinner.stop();
+  ros::shutdown();
+  return result;
+}
